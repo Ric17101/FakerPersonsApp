@@ -21,4 +21,21 @@ class PersonItemUi with _$PersonItemUi {
   const PersonItemUi._();
 
   factory PersonItemUi.init() => const PersonItemUi();
+
+  String get details => 'Email: $email\n'
+      'Phone: $phone\n'
+      'Birthday: $birthday\n'
+      'Gender: $gender\n'
+      'Address: $addressDetails'
+      'Website: $website\n';
+
+  String get addressDetails => 'Street: ${address.street}\n'
+      'StreetName: ${address.streetName}\n'
+      'BuildingNumber: ${address.buildingNumber}\n'
+      'City : ${address.city}\n'
+      'Zipcode : ${address.zipcode}\n'
+      'Country : ${address.country}\n'
+      'CountyCode : ${address.countyCode}\n'
+      'Latitude : ${address.latitude}\n'
+      'Longitude : ${address.longitude}\n';
 }

@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 /// A ListItem that contains data to display.
 class PersonItem extends StatelessWidget {
   final String name;
-  final String email;
+  final String details;
   final String? thumbnail;
   final VoidCallback? onTap;
 
   const PersonItem({
     required this.name,
-    required this.email,
+    required this.details,
     this.thumbnail,
     this.onTap,
     super.key,
@@ -34,7 +34,7 @@ class PersonItem extends StatelessWidget {
       ),
       title: Text(name),
       subtitle: Text(
-        email,
+        details,
         overflow: TextOverflow.visible,
         softWrap: true,
       ),

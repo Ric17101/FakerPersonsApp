@@ -40,7 +40,7 @@ class LoadMoreDataAction extends LoadingAction {
   LoadMoreDataAction() : super(actionKey: key);
 
   static const key = 'load-more-data-action';
-  static const skip = 500;
+  static const skip = 20;
 
   @override
   Future<AppState> reduce() async {

@@ -1,5 +1,6 @@
 import 'package:faker_api_persons/state/models/async_result.dart';
 import 'package:faker_api_persons/state/models/person_item_ui.dart';
+import 'package:faker_api_persons/ui/person_details/person_details_page.dart';
 import 'package:faker_api_persons/ui/person_item.dart';
 import 'package:flutter/material.dart';
 
@@ -66,9 +67,15 @@ class _PersonsOverviewState extends State<PersonsOverview> {
           personItems
               ?.map((personItem) => PersonItem(
                     name: '${personItem.id} - ${personItem.firstname}',
-                    email: personItem.email,
+                    details: personItem.email,
                     thumbnail: personItem.image,
-                    onTap: () {},
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (BuildContext context) =>
+                            PersonDetailsPage(personItem),
+                      ),
+                    ),
                   ))
               .toList() ??
           List.empty(),
@@ -77,7 +84,7 @@ class _PersonsOverviewState extends State<PersonsOverview> {
               ?.map(
                 (personItem) => PersonItem(
                   name: personItem.firstname,
-                  email: personItem.lastname,
+                  details: personItem.lastname,
                 ),
               )
               .toList() ??
