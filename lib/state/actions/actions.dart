@@ -26,10 +26,48 @@ class GetDataAction extends LoadingAction {
 
   @override
   Future<AppState> reduce() async {
-    final data = await getIt<ApiService>().personsApi.personApi.getData(
-          paginationSkip: 20,
-        );
+    final data = await getIt<ApiService>()
+        .personsApi
+        .personApi
+        .getData(paginationSkip: LoadMoreDataAction.skip);
 
     return state.copyWith(data: data);
+  }
+}
+
+/// Get more persons paginated request action
+class LoadMoreDataAction extends LoadingAction {
+  LoadMoreDataAction() : super(actionKey: key);
+
+  static const key = 'load-more-data-action';
+  static const skip = 500;
+
+  @override
+  Future<AppState> reduce() async {
+    final data = await getIt<ApiService>()
+        .personsApi
+        .personApi
+        .getData(paginationSkip: (state.data.total ?? 0) + skip);
+
+    final lastIndex = data.persons.lastOrNull?.id ?? 0;
+    final startOfLastIndex =
+        lastIndex > 0 ? (data.persons.lastOrNull?.id ?? 0) - skip : 0;
+    // TOD: Work around for pagination since API doesn't have that functionality
+    final newPersonList = data.persons.getRange(startOfLastIndex, lastIndex);
+    final updatedData =
+        data.copyWith(persons: [...state.data.persons, ...newPersonList]);
+
+    // Validate if can load more data
+    if ((data.persons.lastOrNull?.id ?? 0) ==
+        (state.data.persons.lastOrNull?.id ?? 0)) {
+      return state.copyWith(
+        data: state.data,
+        noMoreDataCanLoad: true,
+      );
+    }
+    return state.copyWith(
+      data: updatedData,
+      noMoreDataCanLoad: false,
+    );
   }
 }

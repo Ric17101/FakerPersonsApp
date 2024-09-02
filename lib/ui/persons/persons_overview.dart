@@ -6,10 +6,14 @@ import 'package:flutter/material.dart';
 class PersonsOverview extends StatefulWidget {
   const PersonsOverview({
     required this.personItemUiList,
+    required this.loadMoreCallback,
+    required this.noMoreDataCanLoad,
     super.key,
   });
 
   final AsyncResult<List<PersonItemUi>> personItemUiList;
+  final VoidCallback loadMoreCallback;
+  final bool noMoreDataCanLoad;
 
   @override
   State<PersonsOverview> createState() => _PersonsOverviewState();
@@ -28,6 +32,7 @@ class _PersonsOverviewState extends State<PersonsOverview> {
       if (_scrollController.position.pixels ==
               _scrollController.position.maxScrollExtent &&
           !loading) {
+        widget.loadMoreCallback();
       }
     });
   }
@@ -42,11 +47,25 @@ class _PersonsOverviewState extends State<PersonsOverview> {
   Widget build(BuildContext context) {
     const title = 'Person List';
 
+    if (widget.noMoreDataCanLoad) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return const AlertDialog(
+              title: Text("Notice!"),
+              content: Text("No more data is available"),
+            );
+          },
+        );
+      });
+    }
+
     final items = widget.personItemUiList.maybeWhen(
       success: (personItems) =>
           personItems
               ?.map((personItem) => PersonItem(
-                    name: personItem.firstname,
+                    name: '${personItem.id} - ${personItem.firstname}',
                     email: personItem.email,
                     thumbnail: personItem.image,
                     onTap: () {},

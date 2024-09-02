@@ -1,7 +1,6 @@
 import 'package:async_redux/async_redux.dart';
 import 'package:faker_api_persons/state/actions/actions.dart';
 import 'package:faker_api_persons/state/app_state.dart';
-import 'package:faker_api_persons/state/models/async_result.dart';
 import 'package:faker_api_persons/ui/persons/persons_overview.dart';
 import 'package:faker_api_persons/ui/persons/persons_overview_vm.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +15,8 @@ class PersonsOverviewConnector extends StatelessWidget {
         onInitialBuild: (_, store, __) => store.dispatch(GetDataAction()),
         builder: (context, vm) => PersonsOverview(
           personItemUiList: vm.personItemUiList,
+          loadMoreCallback: vm.loadMoreCallback,
+          noMoreDataCanLoad: vm.noMoreDataCanLoad,
         ),
       );
 }

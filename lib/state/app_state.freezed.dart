@@ -21,6 +21,7 @@ AppState _$AppStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$AppState {
   Data get data => throw _privateConstructorUsedError;
+  bool get noMoreDataCanLoad => throw _privateConstructorUsedError;
   Person? get selectedPerson => throw _privateConstructorUsedError;
   int get paginationSkip => throw _privateConstructorUsedError;
   @JsonKey(name: 'wait', ignore: true)
@@ -43,6 +44,7 @@ abstract class $AppStateCopyWith<$Res> {
   @useResult
   $Res call(
       {Data data,
+      bool noMoreDataCanLoad,
       Person? selectedPerson,
       int paginationSkip,
       @JsonKey(name: 'wait', ignore: true) Wait wait});
@@ -67,6 +69,7 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
   @override
   $Res call({
     Object? data = null,
+    Object? noMoreDataCanLoad = null,
     Object? selectedPerson = freezed,
     Object? paginationSkip = null,
     Object? wait = null,
@@ -76,6 +79,10 @@ class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Data,
+      noMoreDataCanLoad: null == noMoreDataCanLoad
+          ? _value.noMoreDataCanLoad
+          : noMoreDataCanLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedPerson: freezed == selectedPerson
           ? _value.selectedPerson
           : selectedPerson // ignore: cast_nullable_to_non_nullable
@@ -126,6 +133,7 @@ abstract class _$$AppStateImplCopyWith<$Res>
   @useResult
   $Res call(
       {Data data,
+      bool noMoreDataCanLoad,
       Person? selectedPerson,
       int paginationSkip,
       @JsonKey(name: 'wait', ignore: true) Wait wait});
@@ -150,6 +158,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? noMoreDataCanLoad = null,
     Object? selectedPerson = freezed,
     Object? paginationSkip = null,
     Object? wait = null,
@@ -159,6 +168,10 @@ class __$$AppStateImplCopyWithImpl<$Res>
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Data,
+      noMoreDataCanLoad: null == noMoreDataCanLoad
+          ? _value.noMoreDataCanLoad
+          : noMoreDataCanLoad // ignore: cast_nullable_to_non_nullable
+              as bool,
       selectedPerson: freezed == selectedPerson
           ? _value.selectedPerson
           : selectedPerson // ignore: cast_nullable_to_non_nullable
@@ -180,6 +193,7 @@ class __$$AppStateImplCopyWithImpl<$Res>
 class _$AppStateImpl implements _AppState {
   const _$AppStateImpl(
       {this.data = const Data(),
+      this.noMoreDataCanLoad = false,
       this.selectedPerson,
       this.paginationSkip = 0,
       @JsonKey(name: 'wait', ignore: true) this.wait = Wait.empty});
@@ -191,6 +205,9 @@ class _$AppStateImpl implements _AppState {
   @JsonKey()
   final Data data;
   @override
+  @JsonKey()
+  final bool noMoreDataCanLoad;
+  @override
   final Person? selectedPerson;
   @override
   @JsonKey()
@@ -201,7 +218,7 @@ class _$AppStateImpl implements _AppState {
 
   @override
   String toString() {
-    return 'AppState(data: $data, selectedPerson: $selectedPerson, paginationSkip: $paginationSkip, wait: $wait)';
+    return 'AppState(data: $data, noMoreDataCanLoad: $noMoreDataCanLoad, selectedPerson: $selectedPerson, paginationSkip: $paginationSkip, wait: $wait)';
   }
 
   @override
@@ -210,6 +227,8 @@ class _$AppStateImpl implements _AppState {
         (other.runtimeType == runtimeType &&
             other is _$AppStateImpl &&
             (identical(other.data, data) || other.data == data) &&
+            (identical(other.noMoreDataCanLoad, noMoreDataCanLoad) ||
+                other.noMoreDataCanLoad == noMoreDataCanLoad) &&
             (identical(other.selectedPerson, selectedPerson) ||
                 other.selectedPerson == selectedPerson) &&
             (identical(other.paginationSkip, paginationSkip) ||
@@ -219,8 +238,8 @@ class _$AppStateImpl implements _AppState {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, data, selectedPerson, paginationSkip, wait);
+  int get hashCode => Object.hash(runtimeType, data, noMoreDataCanLoad,
+      selectedPerson, paginationSkip, wait);
 
   /// Create a copy of AppState
   /// with the given fields replaced by the non-null parameter values.
@@ -241,6 +260,7 @@ class _$AppStateImpl implements _AppState {
 abstract class _AppState implements AppState {
   const factory _AppState(
       {final Data data,
+      final bool noMoreDataCanLoad,
       final Person? selectedPerson,
       final int paginationSkip,
       @JsonKey(name: 'wait', ignore: true) final Wait wait}) = _$AppStateImpl;
@@ -250,6 +270,8 @@ abstract class _AppState implements AppState {
 
   @override
   Data get data;
+  @override
+  bool get noMoreDataCanLoad;
   @override
   Person? get selectedPerson;
   @override

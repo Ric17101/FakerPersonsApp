@@ -12,6 +12,7 @@ part 'app_state.g.dart';
 class AppState with _$AppState {
   const factory AppState({
     @Default(Data()) Data data,
+    @Default(false) bool noMoreDataCanLoad,
     Person? selectedPerson,
     @Default(0) int paginationSkip,
     @Default(Wait.empty) @JsonKey(name: 'wait', ignore: true) Wait wait,

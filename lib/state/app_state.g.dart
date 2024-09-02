@@ -11,6 +11,7 @@ _$AppStateImpl _$$AppStateImplFromJson(Map<String, dynamic> json) =>
       data: json['data'] == null
           ? const Data()
           : Data.fromJson(json['data'] as Map<String, dynamic>),
+      noMoreDataCanLoad: json['noMoreDataCanLoad'] as bool? ?? false,
       selectedPerson: json['selectedPerson'] == null
           ? null
           : Person.fromJson(json['selectedPerson'] as Map<String, dynamic>),
@@ -20,6 +21,7 @@ _$AppStateImpl _$$AppStateImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$AppStateImplToJson(_$AppStateImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
+      'noMoreDataCanLoad': instance.noMoreDataCanLoad,
       'selectedPerson': instance.selectedPerson,
       'paginationSkip': instance.paginationSkip,
     };

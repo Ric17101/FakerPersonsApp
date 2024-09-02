@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:async_redux/async_redux.dart';
 import 'package:faker_api_persons/api/models/address.dart';
 import 'package:faker_api_persons/state/actions/actions.dart';
@@ -11,6 +13,8 @@ class PersonsOverviewVmFactory
   @override
   Vm fromStore() => PersonsOverviewVm(
         personItemUiList: _personItemUiList,
+        loadMoreCallback: _loadMoreCallback,
+        noMoreDataCanLoad: state.noMoreDataCanLoad,
       );
 
   AsyncResult<List<PersonItemUi>> get _personItemUiList {
@@ -34,6 +38,8 @@ class PersonsOverviewVmFactory
     return AsyncResult.success(personList);
   }
 
+  void _loadMoreCallback() => dispatch(LoadMoreDataAction());
+
   bool isPageLoading(List<String> keys) => _isWaitingForKeys(keys);
 
   bool _isWaitingForKeys(List<String> keys) =>
@@ -41,13 +47,18 @@ class PersonsOverviewVmFactory
 
   static const _pageKeys = [
     GetDataAction.key,
+    LoadMoreDataAction.key,
   ];
 }
 
 class PersonsOverviewVm extends Vm {
   PersonsOverviewVm({
     required this.personItemUiList,
-  }) : super(equals: [personItemUiList]);
+    required this.loadMoreCallback,
+    required this.noMoreDataCanLoad,
+  }) : super(equals: [personItemUiList, noMoreDataCanLoad]);
 
   final AsyncResult<List<PersonItemUi>> personItemUiList;
+  final VoidCallback loadMoreCallback;
+  final bool noMoreDataCanLoad;
 }
