@@ -5,10 +5,11 @@ list/table that supports iOS, Android and Web.
 
 ## Project Structure
 
-The repository is organized into folders using clean architecture modularity by separating concerns
-into distinct layers.
+The repository is organized into folders using clean architecture for modularity by separating
+concerns into distinct layers.
 
 ## Features
+
 1. Fetch 20 Persons at a time when scrolling at the last item of the page.
 2. Initial load of the application show List of Persons.
 3. Implement infinite scrolling to fetch the next set of data.
@@ -16,8 +17,11 @@ into distinct layers.
 5. Can navigate to another page to show the Person details.
 
 ## NOTES
-1. Cant implement/display person image due to the website is no longer available and used default person icon instead.
-2. Due to lack of support of pagination with FakeAPI, a work around is done at file [LoadMoreDataAction](https://github.com/Ric17101/FakerProductsApp/blob/968ed05c52aeb465f81fb1ed281c2ed849c1255a/lib/state/actions/actions.dart) 
+
+1. Cannot implement/display person image due to the website is no longer available and used default
+   person icon instead.
+2. Due to lack of support of pagination with FakeAPI, a work around is done at
+   file [LoadMoreDataAction](https://github.com/Ric17101/FakerProductsApp/blob/968ed05c52aeb465f81fb1ed281c2ed849c1255a/lib/state/actions/actions.dart)
 
 ## Getting Started
 
@@ -69,8 +73,8 @@ project.
    generation
 
 ## Screenshots
-![PersonsOverview.png](assets%2Fscreenshots%2FPersonsOverview.png)
-![PersonDetails.png](assets%2Fscreenshots%2FPersonDetails.png)
+
+![PersonsOverview.png](assets%2Fscreenshots%2FPersonsOverview.png) ![PersonDetails.png](assets%2Fscreenshots%2FPersonDetails.png) ![NoMoreData.png](assets%2Fscreenshots%2FNoMoreData.png)
 
 ## Contact
 
