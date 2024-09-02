@@ -4,7 +4,7 @@ part 'data.freezed.dart';
 
 part 'data.g.dart';
 
-/// Entity that represents overall data from products endpoint
+/// Entity that represents overall data from persons endpoint
 @freezed
 class Data with _$Data {
   /// Initializes a new instance of the [Data] class
