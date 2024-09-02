@@ -1,4 +1,5 @@
 import 'package:faker_api_persons/api/models/data.dart';
+import 'package:faker_api_persons/api/models/person.dart';
 import 'package:faker_api_persons/api/my_api_client.dart';
 
 class DataFakerApi {
