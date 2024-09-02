@@ -52,7 +52,7 @@ class LoadMoreDataAction extends LoadingAction {
     final lastIndex = data.persons.lastOrNull?.id ?? 0;
     final startOfLastIndex =
         lastIndex > 0 ? (data.persons.lastOrNull?.id ?? 0) - skip : 0;
-    // TOD: Work around for pagination since API doesn't have that functionality
+    // TODO: Work around for pagination since API doesn't have that functionality
     final newPersonList = data.persons.getRange(startOfLastIndex, lastIndex);
     final updatedData =
         data.copyWith(persons: [...state.data.persons, ...newPersonList]);
