@@ -12,12 +12,12 @@ class DataFakerApi {
   /// https://fakerapi.it/api/v2/persons?_quantity=20
   Future<Data> getData({int paginationSkip = 0}) async {
     final queryParams = <String, dynamic>{};
-    queryParams['_quantity'] = '20';
-    // queryParams['skip'] = '$paginationSkip';
+    queryParams['_quantity'] = '$paginationSkip';
 
     final baseUri = Uri.parse(apiClient.baseUrl);
-    final uri =
-        baseUri.replace(queryParameters: queryParams, path: '/${baseUri.path}');
+    final uri = baseUri.replace(
+      queryParameters: queryParams,
+    );
 
     return await apiClient.dio
         .getUri(uri)
@@ -29,10 +29,10 @@ class DataFakerApi {
   /// https://fakerapi.it/api/v2/persons?id={PERSON_ID}
   Future<Person> getById(int id) async {
     final queryParams = <String, dynamic>{};
+    queryParams['id'] = '$id';
 
     final baseUri = Uri.parse(apiClient.baseUrl);
-    final uri = baseUri.replace(
-        queryParameters: queryParams, path: '/${baseUri.path}$id/');
+    final uri = baseUri.replace(queryParameters: queryParams);
 
     return await apiClient.dio
         .getUri(uri)

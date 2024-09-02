@@ -12,10 +12,10 @@ _$DataImpl _$$DataImplFromJson(Map<String, dynamic> json) => _$DataImpl(
       locale: json['locale'] as String?,
       seed: (json['seed'] as num?)?.toInt(),
       total: (json['total'] as num?)?.toInt(),
-      data: (json['data'] as List<dynamic>?)
-              ?.map((e) => Data.fromJson(e as Map<String, dynamic>))
+      persons: (json['data'] as List<dynamic>?)
+              ?.map((e) => Person.fromJson(e as Map<String, dynamic>))
               .toList() ??
-          const <Data>[],
+          const <Person>[],
     );
 
 Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
@@ -25,5 +25,5 @@ Map<String, dynamic> _$$DataImplToJson(_$DataImpl instance) =>
       'locale': instance.locale,
       'seed': instance.seed,
       'total': instance.total,
-      'data': instance.data,
+      'data': instance.persons,
     };

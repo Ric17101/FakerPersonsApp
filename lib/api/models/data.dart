@@ -1,3 +1,4 @@
+import 'package:faker_api_persons/api/models/person.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'data.freezed.dart';
@@ -14,7 +15,7 @@ class Data with _$Data {
     String? locale,
     int? seed,
     int? total,
-    @Default(<Data>[]) List<Data> data,
+    @JsonKey(name: 'data') @Default(<Person>[]) List<Person> persons,
   }) = _Data;
 
   factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);

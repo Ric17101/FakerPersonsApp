@@ -25,7 +25,8 @@ mixin _$Data {
   String? get locale => throw _privateConstructorUsedError;
   int? get seed => throw _privateConstructorUsedError;
   int? get total => throw _privateConstructorUsedError;
-  List<Data> get data => throw _privateConstructorUsedError;
+  @JsonKey(name: 'data')
+  List<Person> get persons => throw _privateConstructorUsedError;
 
   /// Serializes this Data to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -47,7 +48,7 @@ abstract class $DataCopyWith<$Res> {
       String? locale,
       int? seed,
       int? total,
-      List<Data> data});
+      @JsonKey(name: 'data') List<Person> persons});
 }
 
 /// @nodoc
@@ -70,7 +71,7 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
     Object? locale = freezed,
     Object? seed = freezed,
     Object? total = freezed,
-    Object? data = null,
+    Object? persons = null,
   }) {
     return _then(_value.copyWith(
       status: freezed == status
@@ -93,10 +94,10 @@ class _$DataCopyWithImpl<$Res, $Val extends Data>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int?,
-      data: null == data
-          ? _value.data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Data>,
+      persons: null == persons
+          ? _value.persons
+          : persons // ignore: cast_nullable_to_non_nullable
+              as List<Person>,
     ) as $Val);
   }
 }
@@ -114,7 +115,7 @@ abstract class _$$DataImplCopyWith<$Res> implements $DataCopyWith<$Res> {
       String? locale,
       int? seed,
       int? total,
-      List<Data> data});
+      @JsonKey(name: 'data') List<Person> persons});
 }
 
 /// @nodoc
@@ -134,7 +135,7 @@ class __$$DataImplCopyWithImpl<$Res>
     Object? locale = freezed,
     Object? seed = freezed,
     Object? total = freezed,
-    Object? data = null,
+    Object? persons = null,
   }) {
     return _then(_$DataImpl(
       status: freezed == status
@@ -157,10 +158,10 @@ class __$$DataImplCopyWithImpl<$Res>
           ? _value.total
           : total // ignore: cast_nullable_to_non_nullable
               as int?,
-      data: null == data
-          ? _value._data
-          : data // ignore: cast_nullable_to_non_nullable
-              as List<Data>,
+      persons: null == persons
+          ? _value._persons
+          : persons // ignore: cast_nullable_to_non_nullable
+              as List<Person>,
     ));
   }
 }
@@ -174,8 +175,8 @@ class _$DataImpl implements _Data {
       this.locale,
       this.seed,
       this.total,
-      final List<Data> data = const <Data>[]})
-      : _data = data;
+      @JsonKey(name: 'data') final List<Person> persons = const <Person>[]})
+      : _persons = persons;
 
   factory _$DataImpl.fromJson(Map<String, dynamic> json) =>
       _$$DataImplFromJson(json);
@@ -190,18 +191,18 @@ class _$DataImpl implements _Data {
   final int? seed;
   @override
   final int? total;
-  final List<Data> _data;
+  final List<Person> _persons;
   @override
-  @JsonKey()
-  List<Data> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
+  @JsonKey(name: 'data')
+  List<Person> get persons {
+    if (_persons is EqualUnmodifiableListView) return _persons;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
+    return EqualUnmodifiableListView(_persons);
   }
 
   @override
   String toString() {
-    return 'Data(status: $status, code: $code, locale: $locale, seed: $seed, total: $total, data: $data)';
+    return 'Data(status: $status, code: $code, locale: $locale, seed: $seed, total: $total, persons: $persons)';
   }
 
   @override
@@ -214,13 +215,13 @@ class _$DataImpl implements _Data {
             (identical(other.locale, locale) || other.locale == locale) &&
             (identical(other.seed, seed) || other.seed == seed) &&
             (identical(other.total, total) || other.total == total) &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            const DeepCollectionEquality().equals(other._persons, _persons));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, status, code, locale, seed,
-      total, const DeepCollectionEquality().hash(_data));
+      total, const DeepCollectionEquality().hash(_persons));
 
   /// Create a copy of Data
   /// with the given fields replaced by the non-null parameter values.
@@ -245,7 +246,7 @@ abstract class _Data implements Data {
       final String? locale,
       final int? seed,
       final int? total,
-      final List<Data> data}) = _$DataImpl;
+      @JsonKey(name: 'data') final List<Person> persons}) = _$DataImpl;
 
   factory _Data.fromJson(Map<String, dynamic> json) = _$DataImpl.fromJson;
 
@@ -260,7 +261,8 @@ abstract class _Data implements Data {
   @override
   int? get total;
   @override
-  List<Data> get data;
+  @JsonKey(name: 'data')
+  List<Person> get persons;
 
   /// Create a copy of Data
   /// with the given fields replaced by the non-null parameter values.
