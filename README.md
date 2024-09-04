@@ -21,7 +21,7 @@ concerns into distinct layers.
 1. Cannot implement/display person image due to the website is no longer available and used default
    person icon instead.
 2. Due to lack of support of pagination with FakeAPI, a work around is done at
-   file [LoadMoreDataAction](https://github.com/Ric17101/FakerProductsApp/blob/968ed05c52aeb465f81fb1ed281c2ed849c1255a/lib/state/actions/actions.dart)
+   file [LoadMoreDataAction](https://github.com/Ric17101/FakerProductsApp/blob/872673fd91ff644579997a53755d517b56fde235/lib/state/actions/actions.dart)
 
 ## Getting Started
 
